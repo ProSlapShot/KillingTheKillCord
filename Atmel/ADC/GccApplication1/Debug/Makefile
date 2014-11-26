@@ -39,6 +39,7 @@ C_SRCS +=  \
 ../buttons.c \
 ../softpot.c \
 ../main.c \
+../sseg.c \
 ../timer.c \
 ../uart.c
 
@@ -53,6 +54,7 @@ OBJS +=  \
 buttons.o \
 softpot.o \
 main.o \
+sseg.o \
 timer.o \
 uart.o
 
@@ -60,6 +62,7 @@ OBJS_AS_ARGS +=  \
 buttons.o \
 softpot.o \
 main.o \
+sseg.o \
 timer.o \
 uart.o
 
@@ -67,6 +70,7 @@ C_DEPS +=  \
 buttons.d \
 softpot.d \
 main.d \
+sseg.d \
 timer.d \
 uart.d
 
@@ -74,6 +78,7 @@ C_DEPS_AS_ARGS +=  \
 buttons.d \
 softpot.d \
 main.d \
+sseg.d \
 timer.d \
 uart.d
 
@@ -88,6 +93,8 @@ OUTPUT_FILE_DEP:= ./makedep.mk
 LIB_DEP+= 
 
 # AVR32/GNU C Compiler
+
+
 
 
 

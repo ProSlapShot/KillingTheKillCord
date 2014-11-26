@@ -14,8 +14,8 @@
 #define BTN_PIN  PINB
 #define BTN_PORT PORTB
 
-uint8_t mappings[] = { 1, 2, 0, 0, 0, 0, 0, 0 }; //RH
-static uint8_t pins = _BV(0) | _BV(1) ;	//PB[3,4,5,6,7]
+uint8_t mappings[] = {1, 2, 0, 0, 0, 0, 0 ,0};
+static uint8_t pins = _BV(0) | _BV(1) ;	//PB[0,1]
 static uint8_t tmp = _BV(0) | _BV(1) ;
 static uint8_t waiting = 0;
 
@@ -31,9 +31,9 @@ void buttons_init()
 }
 
 
-ISR(PCINT1_vect)  //interrupt for pin A0
+ISR(PCINT1_vect) 
 {
-	waiting |= (BTN_PIN & pins) ^ tmp;		//Need to mask pins
+	waiting |= (PINB & pins) ^ tmp;		//Need to mask pins
 	tmp = (BTN_PIN & pins);
 }
 
@@ -42,15 +42,16 @@ void check_button_status()
 	
 	if (waiting)
 	{
-		uint8_t i = 0;
+		uint8_t j = 0;
+		
 		
 		do
 		{
-			uint8_t mask = (1 << i);
-			if (waiting & mask)
+			uint8_t mask = (1 << j);
+			if (waiting & mask)				// Detects button press
 			{
 				waiting &= ~mask;
-				if(mappings[i] != 0)
+				if(mappings[j] != 0)
 				{
 					if ((BTN_PIN & pins) & mask)
 					{
@@ -58,13 +59,14 @@ void check_button_status()
 					}
 					else
 					{
-						if(mappings[i] == 1)
+						if(mappings[j] == 1)
 							engine_start();		
-						if(mappings[i] == 2)
+						if(mappings[j] == 2)
 							calibrate();
+							//engine_start();
 					}
 				}
 			}
-		} while(i++ != 7);
+		} while(j++ != 7);
 	}
 }

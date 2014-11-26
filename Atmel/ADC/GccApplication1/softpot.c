@@ -20,7 +20,7 @@ uint16_t tposition_cal = 1;
 
 
 
-int cal = 1;
+int cal = 0;
 
 
 void adc_init()
@@ -63,8 +63,11 @@ ISR(ADC_vect)
 	
 		if(ADMUX == wheel)
 		{
-			if(cal)
+			if(cal == 0 | cal == 1)
+			{
 				wheel_cal = result;
+				cal ++;
+			}
 			else
 			{
 				if(result > (wheel_cal + 25))		//25 is ballpark value, don't want false detection from noise
@@ -78,7 +81,7 @@ ISR(ADC_vect)
 		
 		else if(ADMUX == throttle)
 		{
-			if(!cal)
+			if(!(cal == 0 | cal == 1))
 			{
 				if(result > (throttle_cal + 25))
 					reset_throttle_flag();
@@ -89,7 +92,7 @@ ISR(ADC_vect)
 			else 
 			{
 				throttle_cal = result;
-					cal = 0;
+					cal ++;
 			}
 			ADMUX = wheel;	
 			adc_conv();
@@ -101,5 +104,5 @@ ISR(ADC_vect)
 
 void calibrate()
 {
-	cal = 1;
+	cal = 0;
 }

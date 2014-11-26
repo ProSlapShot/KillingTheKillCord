@@ -124,6 +124,12 @@
     <Compile Include="softpot.h">
       <SubType>compile</SubType>
     </Compile>
+    <Compile Include="sseg.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="sseg.h">
+      <SubType>compile</SubType>
+    </Compile>
     <Compile Include="timer.c">
       <SubType>compile</SubType>
     </Compile>

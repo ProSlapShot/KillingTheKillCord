@@ -13,6 +13,7 @@
 #include "timer.h"
 #include "uart.h"
 #include "buttons.h"
+#include "sseg.h"
 
 
 
@@ -20,17 +21,15 @@ int main(void)
 {
 	
 	DDRB |= _BV(PB7);	//LED lights up when engine is off
-	//PORTB |= _BV(PB7);
-	//DDRD ^= ~_BV(PD2);	//Engine on button
-	//PORTD |= _BV(PD2); //Enable pull up
 	
+	sseg_init();
 	adc_init();
-	timer_init();
-	
+	buttons_init();
 	timer_init();
 	sei();
 	
 	adc_conv();		// starts continuous conversions between ADC
+	//sseg_disp(8);
 	
     while(1)
     {

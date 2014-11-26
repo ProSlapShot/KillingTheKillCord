@@ -8,6 +8,8 @@ softpot.c
 
 main.c
 
+sseg.c
+
 timer.c
 
 uart.c
