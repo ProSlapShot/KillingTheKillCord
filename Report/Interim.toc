@@ -1,13 +1,25 @@
-\contentsline {section}{\numberline {0.1}Introduction}{7}{section.2}
-\contentsline {section}{\numberline {0.2}Research}{7}{section.3}
-\contentsline {subsection}{\numberline {0.2.1}Existing Devices}{7}{subsection.4}
-\contentsline {subsection}{\numberline {0.2.2}Accidents}{7}{subsection.5}
-\contentsline {subsection}{\numberline {0.2.3}Regulations}{7}{subsection.6}
-\contentsline {subsection}{\numberline {0.2.4}Sensors}{7}{subsection.7}
-\contentsline {subsubsection}{\numberline {0.2.4.1}Wheel}{7}{subsubsection.8}
-\contentsline {subsubsection}{\numberline {0.2.4.2}Throttle}{7}{subsubsection.11}
-\contentsline {subsubsection}{\numberline {0.2.4.3}Proximity}{7}{subsubsection.12}
-\contentsline {subsection}{\numberline {0.2.5}Scenarios}{7}{subsection.15}
-\contentsline {section}{\numberline {0.3}Work Completed}{7}{section.16}
-\contentsline {subsection}{\numberline {0.3.1}Testing}{7}{subsection.17}
-\contentsline {section}{\numberline {0.4}Work Remaining}{7}{section.18}
+\contentsline {chapter}{\numberline {1}Introduction}{7}{chapter.2}
+\contentsline {section}{\numberline {1.1}Background}{7}{section.3}
+\contentsline {section}{\numberline {1.2}Problem}{7}{section.4}
+\contentsline {section}{\numberline {1.3}Specification}{7}{section.5}
+\contentsline {chapter}{\numberline {2}Intended Solution}{9}{chapter.6}
+\contentsline {chapter}{\numberline {3}Research}{11}{chapter.7}
+\contentsline {section}{\numberline {3.1}Existing Devices}{11}{section.8}
+\contentsline {subsection}{\numberline {3.1.1}CoastKey\cite {}}{11}{subsection.9}
+\contentsline {subsection}{\numberline {3.1.2}Autotether\cite {}}{11}{subsection.10}
+\contentsline {section}{\numberline {3.2}Accidents}{11}{section.11}
+\contentsline {subsection}{\numberline {3.2.1}Padstow\cite {}}{11}{subsection.12}
+\contentsline {section}{\numberline {3.3}Regulations}{12}{section.13}
+\contentsline {section}{\numberline {3.4}Sensors}{12}{section.14}
+\contentsline {subsection}{\numberline {3.4.1}Wheel}{12}{subsection.15}
+\contentsline {subsubsection}{\numberline {3.4.1.1}Capacitive}{12}{subsubsection.16}
+\contentsline {subsubsection}{\numberline {3.4.1.2}Resistive}{12}{subsubsection.17}
+\contentsline {subsection}{\numberline {3.4.2}Throttle}{13}{subsection.18}
+\contentsline {subsection}{\numberline {3.4.3}Proximity}{13}{subsection.19}
+\contentsline {subsubsection}{\numberline {3.4.3.1}Infra-red}{13}{subsubsection.20}
+\contentsline {subsubsection}{\numberline {3.4.3.2}Ultrasound}{13}{subsubsection.21}
+\contentsline {section}{\numberline {3.5}Scenarios}{13}{section.22}
+\contentsline {chapter}{\numberline {4}Plan}{15}{chapter.23}
+\contentsline {chapter}{Appendix \numberline {A}Gantt Chart}{17}{Appendix.24}
+\contentsline {chapter}{Appendix \numberline {B}Risk Matrix}{19}{Appendix.25}
+\contentsline {chapter}{Appendix \numberline {C}Code}{21}{Appendix.26}

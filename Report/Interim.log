@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.5-1.40.14 (MiKTeX 2.9 64-bit) (preloaded format=pdflatex 2014.11.19)  25 NOV 2014 20:11
+This is pdfTeX, Version 3.1415926-2.5-1.40.14 (MiKTeX 2.9 64-bit) (preloaded format=pdflatex 2014.11.19)  3 DEC 2014 09:23
 entering extended mode
 **Interim.tex
 ("D:\Year 3\Individual Project\Report\Interim.tex"
@@ -465,23 +465,29 @@ Package: longtable 2004/02/01 v4.11 Multi-page Table package (DPC)
 \c@LT@chunks=\count139
 \LT@p@ftn=\toks30
 ))
+("C:\Program Files\MiKTeX 2.9\tex\latex\appendix\appendix.sty"
+Package: appendix 2009/09/02 v1.2b extra appendix facilities
+\c@@pps=\count140
+\c@@ppsavesec=\count141
+\c@@ppsaveapp=\count142
+)
 ("D:\Year 3\Individual Project\Report\Interim.aux")
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 2.
-LaTeX Font Info:    ... okay on input line 2.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 2.
-LaTeX Font Info:    ... okay on input line 2.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 2.
-LaTeX Font Info:    ... okay on input line 2.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 2.
-LaTeX Font Info:    ... okay on input line 2.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 2.
-LaTeX Font Info:    ... okay on input line 2.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 2.
-LaTeX Font Info:    ... okay on input line 2.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 2.
-LaTeX Font Info:    ... okay on input line 2.
-LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 2.
-LaTeX Font Info:    ... okay on input line 2.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 3.
+LaTeX Font Info:    ... okay on input line 3.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 3.
+LaTeX Font Info:    ... okay on input line 3.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 3.
+LaTeX Font Info:    ... okay on input line 3.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 3.
+LaTeX Font Info:    ... okay on input line 3.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 3.
+LaTeX Font Info:    ... okay on input line 3.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 3.
+LaTeX Font Info:    ... okay on input line 3.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 3.
+LaTeX Font Info:    ... okay on input line 3.
+LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 3.
+LaTeX Font Info:    ... okay on input line 3.
 
 *geometry* driver: auto-detecting
 *geometry* detected driver: pdftex
@@ -530,19 +536,19 @@ Package caption Info: End \AtBeginDocument code.
 
 ("C:\Program Files\MiKTeX 2.9\tex\context\base\supp-pdf.mkii"
 [Loading MPS to PDF converter (version 2006.09.02).]
-\scratchcounter=\count140
+\scratchcounter=\count143
 \scratchdimen=\dimen156
 \scratchbox=\box35
-\nofMPsegments=\count141
-\nofMParguments=\count142
+\nofMPsegments=\count144
+\nofMParguments=\count145
 \everyMPshowfont=\toks31
-\MPscratchCnt=\count143
+\MPscratchCnt=\count146
 \MPscratchDim=\dimen157
-\MPnumerator=\count144
-\makeMPintoPDFobject=\count145
+\MPnumerator=\count147
+\makeMPintoPDFobject=\count148
 \everyMPtoPDFconversion=\toks32
 )
-\c@lstlisting=\count146
+\c@lstlisting=\count149
 \AtBeginShipoutBox=\box36
  ("C:\Program Files\MiKTeX 2.9\tex\latex\graphics\color.sty"
 Package: color 2005/11/14 v1.0j Standard LaTeX Color (DPC)
@@ -552,7 +558,7 @@ File: color.cfg 2007/01/18 v1.5 color configuration of teTeX/TeXLive
 )
 Package color Info: Driver file: pdftex.def on input line 130.
 )
-Package hyperref Info: Link coloring ON on input line 2.
+Package hyperref Info: Link coloring ON on input line 3.
 
 ("C:\Program Files\MiKTeX 2.9\tex\latex\hyperref\nameref.sty"
 Package: nameref 2012/10/27 v2.43 Cross-referencing by name of section
@@ -560,11 +566,11 @@ Package: nameref 2012/10/27 v2.43 Cross-referencing by name of section
 ("C:\Program Files\MiKTeX 2.9\tex\generic\oberdiek\gettitlestring.sty"
 Package: gettitlestring 2010/12/03 v1.4 Cleanup title references (HO)
 )
-\c@section@level=\count147
+\c@section@level=\count150
 )
-LaTeX Info: Redefining \ref on input line 2.
-LaTeX Info: Redefining \pageref on input line 2.
-LaTeX Info: Redefining \nameref on input line 2.
+LaTeX Info: Redefining \ref on input line 3.
+LaTeX Info: Redefining \pageref on input line 3.
+LaTeX Info: Redefining \nameref on input line 3.
 
 ("D:\Year 3\Individual Project\Report\Interim.out")
 ("D:\Year 3\Individual Project\Report\Interim.out")
@@ -582,11 +588,11 @@ LaTeX Info: Redefining \nameref on input line 2.
 ------------------------------------------------------------------------------
  Abstract Page
 ------------------------------------------------------------------------------
-LaTeX Font Info:    Try loading font information for U+msa on input line 11.
+LaTeX Font Info:    Try loading font information for U+msa on input line 12.
 ("C:\Program Files\MiKTeX 2.9\tex\latex\amsfonts\umsa.fd"
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Try loading font information for U+msb on input line 11.
+LaTeX Font Info:    Try loading font information for U+msb on input line 12.
 
 ("C:\Program Files\MiKTeX 2.9\tex\latex\amsfonts\umsb.fd"
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
@@ -603,33 +609,124 @@ File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 ] [6
 
 ]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 54.
- [7]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 54.
+Chapter 1.
+------------------------------------------------------------------------------
+ 1 Introduction
+------------------------------------------------------------------------------
+[7
 
-("D:\Year 3\Individual Project\Report\Interim.aux")
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 54.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 54.
-Package rerunfilecheck Info: File `Interim.out' has not changed.
-(rerunfilecheck)             Checksum: 41051A2642103BA2B7A63AD5B0B7881E;1782.
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 54.
+] [8
+
+]
+Chapter 2.
+------------------------------------------------------------------------------
+ 2 Intended Solution
+------------------------------------------------------------------------------
+[9] [10
+
+]
+Chapter 3.
+------------------------------------------------------------------------------
+ 3 Research
+------------------------------------------------------------------------------
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\@ifnextchar' on input line 44.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\@ifnextchar' on input line 48.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\@ifnextchar' on input line 54.
+
+
+LaTeX Warning: Citation `ryasyl' on page 11 undefined on input line 60.
+
+[11] [12] [13] [14
+
+]
+Chapter 4.
+------------------------------------------------------------------------------
+ 4 Plan
+------------------------------------------------------------------------------
+[15] [16
+
+]
+Appendix A.
+------------------------------------------------------------------------------
+ A Gantt Chart
+------------------------------------------------------------------------------
+[17] [18
+
+]
+Appendix B.
+------------------------------------------------------------------------------
+ B Risk Matrix
+------------------------------------------------------------------------------
+[19] [20
+
+]
+Appendix C.
+------------------------------------------------------------------------------
+ C Code
+------------------------------------------------------------------------------
+No file Interim.bbl.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 113.
+[21]
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 113.
+ ("D:\Year 3\Individual Project\Report\Interim.aux")
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 113.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 113.
+
+
+Package rerunfilecheck Warning: File `Interim.out' has changed.
+(rerunfilecheck)                Rerun to get outlines right
+(rerunfilecheck)                or use package `bookmark'.
+
+Package rerunfilecheck Info: Checksums for `Interim.out':
+(rerunfilecheck)             Before: 7274A8D9982CAB9351341AAF97E36928;3739
+(rerunfilecheck)             After:  B77DF33E29552E177F2D5E2390DD00D4;3331.
+
+LaTeX Warning: There were undefined references.
+
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 113.
  ) 
 Here is how much of TeX's memory you used:
- 12732 strings out of 493921
- 181136 string characters out of 3147281
- 251375 words of memory out of 3000000
- 15858 multiletter control sequences out of 15000+200000
- 7816 words of font info for 30 fonts, out of 3000000 for 9000
+ 12874 strings out of 493921
+ 182981 string characters out of 3147281
+ 255799 words of memory out of 3000000
+ 15968 multiletter control sequences out of 15000+200000
+ 8422 words of font info for 32 fonts, out of 3000000 for 9000
  841 hyphenation exceptions out of 8191
  49i,11n,45p,874b,388s stack positions out of 5000i,500n,10000p,200000b,50000s
-<C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmbx10.pfb><C:/Pr
-ogram Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmbx12.pfb><C:/Program Fi
-les/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr10.pfb><C:/Program Files/MiKTe
-X 2.9/fonts/type1/public/amsfonts/cm/cmr12.pfb><C:/Program Files/MiKTeX 2.9/fon
-ts/type1/public/amsfonts/cm/cmsl10.pfb>
-Output written on Interim.pdf (7 pages, 93174 bytes).
+pdfTeX warning (dest): name{Appendix.29} has been referenced but does not exi
+st, replaced by a fixed one
+
+pdfTeX warning (dest): name{Appendix.28} has been referenced but does not exist
+, replaced by a fixed one
+
+pdfTeX warning (dest): name{Appendix.27} has been referenced but does not exist
+, replaced by a fixed one
+
+pdfTeX warning (dest): name{chapter.26} has been referenced but does not exist,
+ replaced by a fixed one
+
+pdfTeX warning (dest): name{section.25} has been referenced but does not exist,
+ replaced by a fixed one
+
+pdfTeX warning (dest): name{section.24} has been referenced but does not exist,
+ replaced by a fixed one
+
+<C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmbx10.pfb><C:/Prog
+ram Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmbx12.pfb><C:/Program File
+s/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr10.pfb><C:/Program Files/MiKTeX 
+2.9/fonts/type1/public/amsfonts/cm/cmr12.pfb><C:/Program Files/MiKTeX 2.9/fonts
+/type1/public/amsfonts/cm/cmsl10.pfb>
+Output written on Interim.pdf (21 pages, 122578 bytes).
 PDF statistics:
- 139 PDF objects out of 1000 (max. 8388607)
- 26 named destinations out of 1000 (max. 500000)
- 105 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 277 PDF objects out of 1000 (max. 8388607)
+ 54 named destinations out of 1000 (max. 500000)
+ 225 words of extra memory for PDF output out of 10000 (max. 10000000)
 

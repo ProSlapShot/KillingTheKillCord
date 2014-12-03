@@ -1,54 +1,113 @@
 \documentclass[10pt]{ecsprogressreport}
+\usepackage[titletoc]{appendix}
 \begin{document}
 
 \title{Killing the Kill Cord}
 \authors{Reece Norton James Williams}
-\supervisor{Dr Alex Wheddell}
-\examiner{-}
+\supervisor{Dr Alex Weddell}
+\examiner{Dr Soon Xin Ng}
 \degree {MEng Electronic Engineering}
 \maketitle
 
 \begin{abstract}
-This project researches into sensor systems to ensure safety in the event of dangerous conditions exerted in power boating. In the past, existing methods have been ineffective. Currently, the common method is for the operator to attach a cord between themselves and the controls, and when this link is broken due to any circumstance, the engine is stalled. This relies heavily on the operator remembering to attach the device to both themselves and the controls, leading to catastrophic accidents due to human error. The goal of this project is to eliminate human error by creating a system which monitors sensors within the helm, allowing reliable and correct actions to be taken based on the feedback. Each scenario is tethered for allowing for the optimum boating experience, whilst maintaining the safety. A prototype system was designed and manufactured.
+This project researches into sensor systems to ensure safety in the event of dangerous conditions exerted in power boating. In the past, existing methods have been ineffective. Currently, the common method is for the operator to attach a cord between themselves and the controls, and when this link is broken due to any circumstance, the engine is stalled. This relies heavily on the operator remembering to attach the device to both themselves and the controls, leading to catastrophic accidents due to human error. The goal of this project is to eliminate human error by creating a system which monitors sensors within the helm, allowing reliable and correct actions to be taken based on the feedback. Each scenario is tethered for, allowing for the optimum boating experience, whilst maintaining the safety. A prototype system is designed and manufactured.
 \end{abstract}
 
 \tableofcontents
 
-\section{Introduction}
+\chapter{Introduction}
 
-\section{Research}
+\section{Background}
 
-\subsection{Existing Devices}
+Safety on a powerboat is of the most uppermost importance when it comes to accidents. Up to now, this has heavily relied on the use of a device called a kill cord. Attached to both the operator and the controls, it acts similar to that of a proximity detector, in which if the operator is ejected from the boat, the kill cord is pulled away from the controls, breaking the connection. Once this cord is disconnected from the controls, the engine will cut immediately, preventing any damage from an uncontrolled boat.
 
-\subsection{Accidents}
+\section{Problem}
 
-\subsection{Regulations}
+Kill cords are a very effective solution when used properly. However, many operators simply don't have them attached to themselves when in charge of the vessel, making them redundant. They have also been known to snap occasionally, causing the same outcome as not wearing one. For these reasons, there has been some discussion on the need for an updated system to ensure safety when boating.
 
-\subsection{Sensors}
 
-\subsubsection{Wheel}
+\section{Specification}
 
-\subsubsection*{Capactive}
+At a minimum the system will be able to detect contact between the operator and the controls, stopping the engine immediately upon release of controls. Harsh sea conditions must not interfere with operation, or cause the system to fail. This level of operation is the current standard.
+Further, the system must be able to run without any need for components to be worn by the operator. Scenario detection will adjust the parameters to allow for convenient use, whilst increasing safety in dangerous situations. 
 
-\subsubsection*{Resistive}
+\chapter{Intended Solution}
 
-\subsubsection{Throttle}
-
-\subsubsection{Proximity}
-
-\subsubsection*{Infra-red}
-
-\subsubsection*{Ultrasound}
-
-\subsection{Scenarios}
-
-\section{Work Completed}
-
-\subsection{Testing}
-
-\section{Work Remaining}
+Eliminating the need to attach a device to the operator solves the human error associated with previous techniques. Using sensors in and around the helm provides feedback of the operators intentions, or situation they may be in. 
 
 
 
+\chapter{Research}
+
+\section{Existing Devices}
+
+\subsection{CoastKey\cite{}}
+
+A wireless device is attached to the operator, which transmits a signal to a receiver. If the operator falls overboard, then this connection is broken, causing the device to stall the engine. This is an effective alternative in the case of operator ejection, however, it will be ineffective in the event of the operator being knocked unconscious whilst remaining in the boat. Human error is still a significant factor within this system as it is relying on the operator to be wearing the transmitter at all times. Portable transmitters require batteries, and will eventually need replacing. 
+
+\subsection{Autotether\cite{}}
+
+Similar to the CoastKey, it consists of a wireless transmitter and a receiver module. Different to the CoastKey, the Autotether is plug and go with a cord attached to the receiver that mimics the existing kill cord. Additionally the Autotether allows up to four transmitters to be used simultaneously, with a loud audible tone if any of the passengers being thrown over board. 
+
+\section{Accidents}
+
+\subsection{Padstow\cite{}}
+As operators switched positions, the kill cord was unattached and not reattached. Moments later a sharp turn was made along with simultaneously increased throttle, causing the boat to roll, ejecting the operator and all passengers.  
+
+
+\section{Regulations}
+
+Currently there are no regulations in place for taking the helm of a boat. No knowledge is needed either, so an inexperienced operator could be caught off guard when hitting a wake, or making a sharp turn. The Royal Yatching Association (RYA) does offer power boating courses, with the importance of the kill cord being demonstrated even at level one\cite{ryasyl}. 
+
+Further to offering courses the RYA have released a powerboat handbook which has the basic information within, and also reiterates the importance of having a firm grip along with the kill cord attached whilst making manoeuvres.
+
+\section{Sensors}
+
+Due to the nature of boating, all the sensors within the system need to withstand the harsh conditions found at sea. This includes being sprayed or submerged in salty water, high winds, and temperature changes. High impact forces will be exerted indirectly on the components, and they must not fail when subjected to such forces.
+
+\subsection{Wheel}
+
+To be in full control of the boat, the operator must have a hand on the steering wheel at all times. Neither can the operator be wearing a device, as this introduces human error. Therefore, a touch sensor is the ideal candidate. 
+\subsubsection{Capacitive}
+
+Capacitive sensors can be made suitable for many shapes, suiting the need to fix a sensor to the steering wheel. They operate by monitoring the capacitance from a charged plate. When a conductive object approaches the charged plate, the capacitance increases. Unfortunately, water is conductive, giving a false reading from capacitive sensors when wet. Water droplets can be distinguished from touch using an array of sensors, however, submersion cannot\cite{}.
+
+\subsubsection{Resistive}
+
+Simple resistive touch sensors consist of two contacts with conductive material in between. Although this allows the flexibility to surround the steering wheel, it is also unreliable due to many factors. The foam will eventually deform, altering the resistance when no touch is present, and if not made properly the water will seep in, short circuiting the connection.
+
+Membrane potentiometers have a slight gap between two plates, closing when pressure is applied. Being very thin, and flexible along one axis, it is a viable option to cover the steering wheel with. Also being manufactured as a sealed unit, no water ingress will occur. Additionally the resistance changes depending on the distance of the pressure from the end of the membrane potentiometer, allowing for basic positional sensing if needed.
+
+
+Comparing the two types of sensors for the wheel it is clear that the best option is the membrane potentiometer. Being flexible, and a sealed unit that should operate with water present nearby, it is the most reliable.
+   
+\subsection{Throttle}
+
+Another control that is used by the operator is the throttle. If they have a hand on the throttle it indicates that they are in control of the speed, and therefore in control of the boat. As previously discussed, a membrane potentiometer can be fixed to the throttle to allow for this detection.
+
+Further to a membrane potentiometer, the position of the throttle can be monitored. 
+
+\subsection{Proximity}
+
+\subsubsection{Infra-red}
+
+\subsubsection{Ultrasound}
+
+\section{Scenarios}
+
+\chapter{Plan}
+
+\begin{appendices}
+
+\chapter{Gantt Chart}
+
+\chapter{Risk Matrix}
+
+\chapter{Code}
+
+\end{appendices}
+
+\bibliographystyle{plain}
+\bibliography{interim}
 
 \end{document}
