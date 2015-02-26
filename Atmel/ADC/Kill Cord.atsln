@@ -3,6 +3,8 @@ Microsoft Visual Studio Solution File, Format Version 11.00
 # Atmel Studio Solution File, Format Version 11.00
 Project("{54F91283-7BC4-4236-8FF9-10F437C3AD48}") = "Softpot", "GccApplication1\Softpot.cproj", "{C50F02A4-F213-471C-A217-93A7187B8FD1}"
 EndProject
+Project("{54F91283-7BC4-4236-8FF9-10F437C3AD48}") = "RotaryEnc", "RotaryEnc\RotaryEnc.cproj", "{C79E7645-1DB5-4B6E-A3B1-22A2E8E0974A}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|AVR = Debug|AVR
@@ -13,6 +15,10 @@ Global
 		{C50F02A4-F213-471C-A217-93A7187B8FD1}.Debug|AVR.Build.0 = Debug|AVR
 		{C50F02A4-F213-471C-A217-93A7187B8FD1}.Release|AVR.ActiveCfg = Release|AVR
 		{C50F02A4-F213-471C-A217-93A7187B8FD1}.Release|AVR.Build.0 = Release|AVR
+		{C79E7645-1DB5-4B6E-A3B1-22A2E8E0974A}.Debug|AVR.ActiveCfg = Debug|AVR
+		{C79E7645-1DB5-4B6E-A3B1-22A2E8E0974A}.Debug|AVR.Build.0 = Debug|AVR
+		{C79E7645-1DB5-4B6E-A3B1-22A2E8E0974A}.Release|AVR.ActiveCfg = Release|AVR
+		{C79E7645-1DB5-4B6E-A3B1-22A2E8E0974A}.Release|AVR.Build.0 = Release|AVR
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
