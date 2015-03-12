@@ -39,6 +39,7 @@ C_SRCS +=  \
 ../main.c \
 ../rotaryenc.c \
 ../rtrlut.c \
+../timer.c \
 ../uart.c
 
 
@@ -52,24 +53,28 @@ OBJS +=  \
 main.o \
 rotaryenc.o \
 rtrlut.o \
+timer.o \
 uart.o
 
 OBJS_AS_ARGS +=  \
 main.o \
 rotaryenc.o \
 rtrlut.o \
+timer.o \
 uart.o
 
 C_DEPS +=  \
 main.d \
 rotaryenc.d \
 rtrlut.d \
+timer.d \
 uart.d
 
 C_DEPS_AS_ARGS +=  \
 main.d \
 rotaryenc.d \
 rtrlut.d \
+timer.d \
 uart.d
 
 OUTPUT_FILE_PATH +=RotaryEnc.elf
@@ -83,6 +88,8 @@ OUTPUT_FILE_DEP:= ./makedep.mk
 LIB_DEP+= 
 
 # AVR32/GNU C Compiler
+
+
 
 
 

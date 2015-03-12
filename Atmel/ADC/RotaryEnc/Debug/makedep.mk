@@ -8,5 +8,7 @@ rotaryenc.c
 
 rtrlut.c
 
+timer.c
+
 uart.c
 

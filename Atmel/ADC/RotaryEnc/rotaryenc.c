@@ -8,10 +8,11 @@
 #include <avr/io.h>
 #include <avr/interrupt.h>
 #include "rotaryenc.h"
+#include "uart.h"
 
-#define RTR_DDR  DDRC
-#define RTR_PIN  PINC
-#define RTR_PORT PORTC
+#define RTR_DDR  DDRB
+#define RTR_PIN  PINB
+#define RTR_PORT PORTB
 #define RTR_INVALID 255
 
 static const uint8_t rtrlut[128] =
@@ -34,21 +35,21 @@ static const uint8_t rtrlut[128] =
 static uint8_t pins = _BV(0) | _BV(1) | _BV(2) | _BV(3) | _BV(4) | _BV(5) | _BV(6) | _BV(7)  ;
 static uint8_t tmp = _BV(0) | _BV(1) | _BV(2) | _BV(3) | _BV(4) | _BV(5) | _BV(6) | _BV(7)  ;
 static uint8_t waiting = 0;
-
+static uint8_t rtr_pos = 0;
 
 void rot_init()
 {
 		RTR_DDR |= ~pins; //Set Port C as inputs
 		RTR_PORT |= pins; // Enable pull up resistors
 		
-		PCICR = _BV(PCIE2); //Enable interrupts on Port B
-		PCMSK2 |= pins; //Set pins on Port B as interrupts			
+		PCICR = _BV(PCIE1); //Enable interrupts on Port B
+		PCMSK1 |= pins; //Set pins on Port B as interrupts			
 			
 		tmp = (RTR_PIN & pins);		// Initial button status
 		
 }
 
-ISR(PCINT2_vect)
+ISR(PCINT1_vect)
 {
 	waiting |= (RTR_PIN & pins) ^ tmp;		//Need to mask pins
 	tmp = (RTR_PIN & pins);
@@ -60,23 +61,36 @@ uint8_t rtr_value()
 }
 
 
-uint8_t rtr_position(uint8_t rtr_previous)
+uint8_t rtr_position()
 {
 	if (waiting)
 	{
+		//uart_str("Entered WAITING function.\n");
 		uint8_t i = 0;
 	
 		for(i=0 ; i<=127 ; i++)
 		{
 			if(rtrlut[i] == rtr_value())
+			{
+			/*	uart_str("Looking for value.\n");
+				uart_str("i = ");
+				uart_data(i);
+				uart_str("\nRotary Position = ");
+				uart_data(rtr_pos);
+				uart_str("\n");		*/
+				rtr_pos = i;
 				return i;
+			}
 		}
 	
 		return RTR_INVALID;
 	}
+	//uart_str("No Pin change \n");
 	
-	return rtr_previous;
+	return rtr_pos;
 }
+
+
 
 
 
