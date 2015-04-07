@@ -19,5 +19,7 @@ void uart_data(uint8_t d);
 
 void uart_str(char *str);
 
+void uart_number(uint8_t x);
+
 
 #endif

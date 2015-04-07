@@ -15,6 +15,9 @@
 #define F_CPU 12000000
 #define timer_freq 50
 
+//static uint8_t rot_sel = 0;
+//static uint8_t[8] rot_one = {0,0,0,0,0,0,0,0};
+//static uint8_t[8] rot_two = {0,0,0,0,0,0,0,0};
 
 void timer_init()
 {
@@ -26,7 +29,16 @@ void timer_init()
 
 ISR(TIMER0_COMPA_vect)
 {
+	rtr_intrpt();
+	
+	//uart_str("Rotary Encoder: ");
+	//uart_data(rot_sel);
+//	uart_str("\n");
+	//uart_data(rtr_position(rot_sel));
+	//rot_sel = !rot_sel;
+	
+	
 	//rtr_position();
-	uart_data(rtr_position());
+	//uart_data(rtr_position());
 	//uart_data(rtr_value());
 }

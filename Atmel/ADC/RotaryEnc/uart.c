@@ -51,3 +51,12 @@ void uart_str(char *str)
 	for(i=0; str[i]; i++) uart_tx(str[i]);
 }
 
+void uart_number(uint8_t x)			// Recursive function to print digits
+{
+	if((x/10)!=0)
+	uart_number(x/10);
+	
+	char conv = '0' + (x%10);		//Converts uint to char for easy logging
+	uart_tx(conv);
+	//uart_data(x%10);	
+}

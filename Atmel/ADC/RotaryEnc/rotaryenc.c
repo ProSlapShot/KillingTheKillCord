@@ -10,9 +10,9 @@
 #include "rotaryenc.h"
 #include "uart.h"
 
-#define RTR_DDR  DDRB
-#define RTR_PIN  PINB
-#define RTR_PORT PORTB
+#define RTR_DDR  DDRA
+#define RTR_PIN  PINA
+#define RTR_PORT PORTA	
 #define RTR_INVALID 255
 
 static const uint8_t rtrlut[128] =
@@ -24,7 +24,7 @@ static const uint8_t rtrlut[128] =
 	6,2,18,82,83,211,195,203,235,239,
 	231,199,71,7,23,19,3,1,9,41,169,
 	233,225,229,245,247,243,227,163,
-	131,139,137,129,128,132
+	131,139,137	,129,128,132
 	,148,212,244,240,242,250,251,249,241,209
 	,193,197,196,192,64,66,74,106,122,120,121
 	,125,253,252,248,232,224,226,98,96,32,33
@@ -33,26 +33,47 @@ static const uint8_t rtrlut[128] =
 };
 
 static uint8_t pins = _BV(0) | _BV(1) | _BV(2) | _BV(3) | _BV(4) | _BV(5) | _BV(6) | _BV(7)  ;
-static uint8_t tmp = _BV(0) | _BV(1) | _BV(2) | _BV(3) | _BV(4) | _BV(5) | _BV(6) | _BV(7)  ;
-static uint8_t waiting = 0;
-static uint8_t rtr_pos = 0;
+static uint8_t tmp_one = _BV(0) | _BV(1) | _BV(2) | _BV(3) | _BV(4) | _BV(5) | _BV(6) | _BV(7)  ;
+static uint8_t waiting_one = 0;
+static uint8_t rtr_pos_one = 0;
+static uint8_t tmp_two = _BV(0) | _BV(1) | _BV(2) | _BV(3) | _BV(4) | _BV(5) | _BV(6) | _BV(7)  ;
+static uint8_t waiting_two = 0;
+static uint8_t rtr_pos_two = 0;
+static uint8_t sel = 0;
+
+static uint8_t cbuf_one[75];
+static uint8_t cbuf_one_dif[74];
+static uint8_t cbuf_two[75];
+static uint8_t cbuf_two_dif[74];
+
 
 void rot_init()
 {
 		RTR_DDR |= ~pins; //Set Port C as inputs
 		RTR_PORT |= pins; // Enable pull up resistors
 		
-		PCICR = _BV(PCIE1); //Enable interrupts on Port B
-		PCMSK1 |= pins; //Set pins on Port B as interrupts			
-			
-		tmp = (RTR_PIN & pins);		// Initial button status
+		PCICR = _BV(PCIE0); //Enable interrupts on Port B
+		PCMSK0 |= pins; //Set pins on Port B as interrupts	
 		
+		DDRD |= _BV(PIND3);			//Rotary Select Pin	
+		PORTD |= _BV(PIND3);
+			
+		tmp_two = (RTR_PIN & pins);		// Initial encoder status (2)
+		
+		PORTD &= ~_BV(PIND3);
+		tmp_one = (RTR_PIN & pins);		
 }
 
-ISR(PCINT1_vect)
+ISR(PCINT0_vect)
 {
-	waiting |= (RTR_PIN & pins) ^ tmp;		//Need to mask pins
-	tmp = (RTR_PIN & pins);
+	if(!sel){
+		waiting_one |= (RTR_PIN & pins) ^ tmp_one;		//Need to mask pins
+		tmp_one = (RTR_PIN & pins);
+	}
+	else{
+		waiting_two |= (RTR_PIN & pins) ^ tmp_two;		//Need to mask pins
+		tmp_two = (RTR_PIN & pins);
+	}
 }
 
 uint8_t rtr_value()
@@ -61,33 +82,77 @@ uint8_t rtr_value()
 }
 
 
-uint8_t rtr_position()
+uint8_t rtr_position(uint8_t x)
 {
-	if (waiting)
-	{
-		//uart_str("Entered WAITING function.\n");
-		uint8_t i = 0;
-	
-		for(i=0 ; i<=127 ; i++)
+	if(!x){								//Retrieves encoder one position (0-128) 
+		PORTD |= _BV(PIND3);
+		if (waiting_one)
 		{
-			if(rtrlut[i] == rtr_value())
+			uint8_t i = 0;
+			
+			for(i=0 ; i<=127 ; i++)
 			{
-			/*	uart_str("Looking for value.\n");
-				uart_str("i = ");
-				uart_data(i);
-				uart_str("\nRotary Position = ");
-				uart_data(rtr_pos);
-				uart_str("\n");		*/
-				rtr_pos = i;
-				return i;
+				if(rtrlut[i] == rtr_value())
+				{
+					rtr_pos_one = i;
+					return i;
+				}
 			}
+			
+			return RTR_INVALID;
 		}
-	
-		return RTR_INVALID;
+		
+		return rtr_pos_one;
 	}
-	//uart_str("No Pin change \n");
-	
-	return rtr_pos;
+	else if(x){							//Retrieves encoder two position (0-128) 
+		PORTD &= ~_BV(PIND3);
+		if (waiting_two)
+		{
+			uint8_t i = 0;
+			
+			for(i=0 ; i<=127 ; i++)
+			{
+				if(rtrlut[i] == rtr_value())
+				{
+					rtr_pos_two = i;
+					return i;
+				}
+			}
+			
+			return RTR_INVALID;
+		}
+		
+		return rtr_pos_two;
+	}
+	else
+	return RTR_INVALID;
+}
+
+void rtr_intrpt()
+{
+	if(!sel){
+		static uint8_t buff_one = 0;		// Monitors if position has changed = easier to read information
+		rtr_pos_one = rtr_position(sel);
+		if(buff_one != rtr_pos_one){
+			uart_str("\nRotary ");
+			uart_number(sel);
+			uart_str(" Pos :");
+			uart_number(rtr_pos_one);
+		}
+		buff_one = rtr_pos_one;
+		sel = 1;
+	}else{
+		static uint8_t buff_two = 0;
+		rtr_pos_two = rtr_position(sel);
+		if(buff_two != rtr_pos_two){
+			uart_str("\nRotary ");
+			uart_number(sel);
+			uart_str(" Pos :");
+			uart_number(rtr_pos_two);
+		}
+		buff_two = rtr_pos_two;
+		sel = 0;
+	}
 }
 
 

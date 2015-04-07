@@ -14,7 +14,9 @@ void rot_init();
 
 uint8_t rtr_value();
 
-uint8_t rtr_position();
+uint8_t rtr_position(uint8_t x);
+
+void rtr_intrpt();
 
 
 
