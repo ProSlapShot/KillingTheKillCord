@@ -29,7 +29,9 @@ void timer_init()
 
 ISR(TIMER0_COMPA_vect)
 {
+	//uart_str("Entered timer interrupt\n");
 	rtr_intrpt();
+	
 	
 	//uart_str("Rotary Encoder: ");
 	//uart_data(rot_sel);

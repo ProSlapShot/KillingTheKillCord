@@ -18,6 +18,10 @@ uint8_t rtr_position(uint8_t x);
 
 void rtr_intrpt();
 
+void rtr_buff_update();
+
+void rtr_speed();
+
 
 
 
