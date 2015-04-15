@@ -3,6 +3,8 @@
  *
  * Created: 10/02/2015 16:10:50
  *  Author: Reece
+ * RE one = wheel
+ * RE two = throttle
  */ 
 
 #include <avr/io.h>
@@ -34,23 +36,22 @@ static const uint8_t rtrlut[128] =
 };
 
 static uint8_t rtrlut_fast[256] = {0};
+uint8_t pins = _BV(0) | _BV(1) | _BV(2) | _BV(3) | _BV(4) | _BV(5) | _BV(6) | _BV(7)  ;		//Pins for encoder
+//uint8_t tmp_one = _BV(0) | _BV(1) | _BV(2) | _BV(3) | _BV(4) | _BV(5) | _BV(6) | _BV(7)  ;	//Variables to hold states
+//uint8_t waiting_one = 0;
+uint8_t rtr_pos_one = 0;
+//uint8_t tmp_two = _BV(0) | _BV(1) | _BV(2) | _BV(3) | _BV(4) | _BV(5) | _BV(6) | _BV(7)  ;
+//uint8_t waiting_two = 0;
+uint8_t rtr_pos_two = 0;
+uint8_t sel = 0;			//Encoder Select
 
-static uint8_t pins = _BV(0) | _BV(1) | _BV(2) | _BV(3) | _BV(4) | _BV(5) | _BV(6) | _BV(7)  ;		//Pins for encoder
-static uint8_t tmp_one = _BV(0) | _BV(1) | _BV(2) | _BV(3) | _BV(4) | _BV(5) | _BV(6) | _BV(7)  ;	//Variables to hold states
-static uint8_t waiting_one = 0;
-static uint8_t rtr_pos_one = 0;
-static uint8_t tmp_two = _BV(0) | _BV(1) | _BV(2) | _BV(3) | _BV(4) | _BV(5) | _BV(6) | _BV(7)  ;
-static uint8_t waiting_two = 0;
-static uint8_t rtr_pos_two = 0;
-static uint8_t sel = 0;			//Encoder Select
+uint8_t cbuf_one[75] = {0};		//Circular buffers & differences
+int cbuf_one_dif[75] = {0};
+uint8_t cbuf_two[75] = {0};
+int cbuf_two_dif[75] = {0};
 
-static uint8_t cbuf_one[75] = {0};		//Circular buffers & differences
-static int cbuf_one_dif[75] = {0};
-static uint8_t cbuf_two[75] = {0};
-static int cbuf_two_dif[75] = {0};
-
-static uint8_t one_bpos = 0;		//Circular buffer positions
-static uint8_t two_bpos = 0;
+uint8_t one_bpos = 0;		//Circular buffer positions
+uint8_t two_bpos = 0;
 
 
 void rot_init()
@@ -78,21 +79,22 @@ void rot_init()
 			
 }
 
-ISR(PCINT0_vect)		//NOT USED- NO NEED
-{
-	uart_str("Button interrupt\n");
-	if(!sel){
-		waiting_one |= (RTR_PIN & pins) ^ tmp_one;		//Need to mask pins
-		tmp_one = (RTR_PIN & pins);
-	}
-	else{
-		waiting_two |= (RTR_PIN & pins) ^ tmp_two;		//Need to mask pins
-		tmp_two = (RTR_PIN & pins);
-	}
-}
+//ISR(PCINT0_vect)		//NOT USED- NO NEED
+//{
+	//uart_str("Button interrupt\n");
+	//if(!sel){
+		//waiting_one |= (RTR_PIN & pins) ^ tmp_one;		//Need to mask pins
+		//tmp_one = (RTR_PIN & pins);
+	//}
+	//else{
+		//waiting_two |= (RTR_PIN & pins) ^ tmp_two;		//Need to mask pins
+		//tmp_two = (RTR_PIN & pins);
+	//}
+//}
 
 uint8_t rtr_qpos(uint8_t x)
 {
+	static uint8_t danger = 0;
 	if(!x){								
 		PORTD |= _BV(PIND3);
 		
@@ -101,6 +103,16 @@ uint8_t rtr_qpos(uint8_t x)
 			return rtr_pos_one;
 		}
 		rtr_pos_one = rtrlut_fast[rtr_value()];
+		
+		if ((rtr_pos_one > 32) && (rtr_pos_one < 96)){
+			if(!danger)
+				uart_str("DANGER ZONE");
+			danger = 1;
+		}
+		else if(!((rtr_pos_one > 32) && (rtr_pos_one < 96)) && (danger == 1)){
+			uart_str("EXIT DANGER ZONE");
+			danger = 0;
+		}
 			
 		return rtr_pos_one;
 	}
@@ -125,51 +137,51 @@ uint8_t rtr_value()
 	return RTR_PIN & pins;
 }
 
-uint8_t rtr_position(uint8_t x)		//NOT USED- SLOWER VERSION
-{
-	if(!x){								//Retrieves encoder one position (0-128)
-		PORTD |= _BV(PIND3);
-		if (waiting_one)
-		{
-			uint8_t i = 0;
-			
-			for(i=0 ; i<=127 ; i++)
-			{
-				if(rtrlut[i] == rtr_value())
-				{
-					rtr_pos_one = i;
-					return i;
-				}
-			}
-			
-			return RTR_INVALID;
-		}
-		
-		return rtr_pos_one;
-	}
-	else if(x){							//Retrieves encoder two position (0-128)
-		PORTD &= ~_BV(PIND3);
-		if (waiting_two)
-		{
-			uint8_t i = 0;
-			
-			for(i=0 ; i<=127 ; i++)
-			{
-				if(rtrlut[i] == rtr_value())
-				{
-					rtr_pos_two = i;
-					return i;
-				}
-			}
-			
-			return RTR_INVALID;
-		}
-		
-		return rtr_pos_two;
-	}
-	else
-	return RTR_INVALID;
-}
+//uint8_t rtr_position(uint8_t x)		//NOT USED- SLOWER VERSION
+//{
+	//if(!x){								//Retrieves encoder one position (0-128)
+		//PORTD |= _BV(PIND3);
+		//if (waiting_one)
+		//{
+			//uint8_t i = 0;
+			//
+			//for(i=0 ; i<=127 ; i++)
+			//{
+				//if(rtrlut[i] == rtr_value())
+				//{
+					//rtr_pos_one = i;
+					//return i;
+				//}
+			//}
+			//
+			//return RTR_INVALID;
+		//}
+		//
+		//return rtr_pos_one;
+	//}
+	//else if(x){							//Retrieves encoder two position (0-128)
+		//PORTD &= ~_BV(PIND3);
+		//if (waiting_two)
+		//{
+			//uint8_t i = 0;
+			//
+			//for(i=0 ; i<=127 ; i++)
+			//{
+				//if(rtrlut[i] == rtr_value())
+				//{
+					//rtr_pos_two = i;
+					//return i;
+				//}
+			//}
+			//
+			//return RTR_INVALID;
+		//}
+		//
+		//return rtr_pos_two;
+	//}
+	//else
+	//return RTR_INVALID;
+//}
 
 void rtr_speed()
 {
@@ -373,28 +385,29 @@ void rtr_buff_update()
 
 void rtr_intrpt()
 {	
-	if(!sel){
-		static uint8_t buff_one = 0;		// Monitors if position has changed = easier to read information
-		rtr_pos_one = rtr_qpos(sel);
-		if(buff_one != rtr_pos_one){
-			//uart_str("\nRotary ");	//DEBUGGING
-			//uart_number(sel);
-			//uart_str(" Pos :");
-			//uart_number(rtr_pos_one);
-		}
-		buff_one = rtr_pos_one;
-	}else{
-		static uint8_t buff_two = 0;
-		rtr_pos_two = rtr_qpos(sel);
-		if(buff_two != rtr_pos_two){
-			//uart_str("\nRotary ");	//DEBUGGING
-			//uart_number(sel);
-			//uart_str(" Pos :");
-			//uart_number(rtr_pos_two);
-		}
-		buff_two = rtr_pos_two;
-	}
-	//uart_str("Checked encoder pos\n");
+	//if(!sel){
+		//static uint8_t buff_one = 0;		// Monitors if position has changed = easier to read information
+		//rtr_pos_one = rtr_qpos(sel);
+		//if(buff_one != rtr_pos_one){
+			////uart_str("\nRotary ");	//DEBUGGING
+			////uart_number(sel);
+			////uart_str(" Pos :");
+			////uart_number(rtr_pos_one);
+		//}
+		//buff_one = rtr_pos_one;
+	//}else{
+		//static uint8_t buff_two = 0;
+		//rtr_pos_two = rtr_qpos(sel);
+		//if(buff_two != rtr_pos_two){
+			////uart_str("\nRotary ");	//DEBUGGING
+			////uart_number(sel);
+			////uart_str(" Pos :");
+			////uart_number(rtr_pos_two);
+		//}
+		//buff_two = rtr_pos_two;
+	//}
+	////uart_str("Checked encoder pos\n");
+	rtr_qpos(sel);
 	rtr_buff_update();
 
 

@@ -8,6 +8,7 @@
 #include <avr/interrupt.h>
 #include "timer.h"
 #include "rotaryenc.h"
+#include "softpot.h"
 #include "uart.h"
 
 
@@ -31,6 +32,7 @@ ISR(TIMER0_COMPA_vect)
 {
 	//uart_str("Entered timer interrupt\n");
 	rtr_intrpt();
+	//check_spt_status();
 	
 	
 	//uart_str("Rotary Encoder: ");

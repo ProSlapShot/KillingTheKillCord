@@ -36,6 +36,7 @@ SUBDIRS :=
 
 # Add inputs and outputs from these tool invocations to the build variables 
 C_SRCS +=  \
+../softpot.c \
 ../main.c \
 ../rotaryenc.c \
 ../rtrlut.c \
@@ -50,6 +51,7 @@ ASM_SRCS +=
 
 
 OBJS +=  \
+softpot.o \
 main.o \
 rotaryenc.o \
 rtrlut.o \
@@ -57,6 +59,7 @@ timer.o \
 uart.o
 
 OBJS_AS_ARGS +=  \
+softpot.o \
 main.o \
 rotaryenc.o \
 rtrlut.o \
@@ -64,6 +67,7 @@ timer.o \
 uart.o
 
 C_DEPS +=  \
+softpot.d \
 main.d \
 rotaryenc.d \
 rtrlut.d \
@@ -71,6 +75,7 @@ timer.d \
 uart.d
 
 C_DEPS_AS_ARGS +=  \
+softpot.d \
 main.d \
 rotaryenc.d \
 rtrlut.d \
@@ -88,6 +93,8 @@ OUTPUT_FILE_DEP:= ./makedep.mk
 LIB_DEP+= 
 
 # AVR32/GNU C Compiler
+
+
 
 
 

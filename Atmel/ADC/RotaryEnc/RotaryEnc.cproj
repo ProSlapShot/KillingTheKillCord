@@ -95,6 +95,9 @@
     </ToolchainSettings>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="softpot.c">
+      <SubType>compile</SubType>
+    </Compile>
     <Compile Include="main.c">
       <SubType>compile</SubType>
     </Compile>
@@ -105,6 +108,9 @@
       <SubType>compile</SubType>
     </Compile>
     <Compile Include="rtrlut.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="softpot.h">
       <SubType>compile</SubType>
     </Compile>
     <Compile Include="timer.c">

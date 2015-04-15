@@ -22,6 +22,7 @@
 #include <util/delay.h>
 #include "uart.h"
 #include "rotaryenc.h"
+#include "softpot.h"
 #include "timer.h"
 
 
@@ -31,6 +32,7 @@ int main(void)
 	uart_init();
 	timer_init();
 	rot_init();
+	//softpot_init();
 	sei();
 
 
