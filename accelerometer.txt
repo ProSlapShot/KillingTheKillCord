@@ -1,0 +1,1 @@
+http://wiki.analog.com/resources/tools-software/uc-drivers/microchip/adxl345
